@@ -2,7 +2,7 @@ import { type NodeExecutionContext } from "@gravityai-dev/plugin-base";
 import { CloudinaryFileContentConfig, CloudinaryFileContentOutput } from "../util/types";
 import { getCloudinaryFileContent } from "../service/getFileContent";
 import { PromiseNode, createLogger } from "../../shared/platform";
-import { NODE_TYPE } from "./index";
+const NODE_TYPE = "CloudinaryFileContent";
 
 export class CloudinaryFileContentExecutor extends PromiseNode<CloudinaryFileContentConfig> {
   constructor() {

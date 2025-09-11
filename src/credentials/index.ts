@@ -6,25 +6,31 @@ export const CloudinaryCredential = {
   name: "cloudinaryCredential",
   displayName: "Cloudinary",
   description: "Cloudinary API credentials for media management",
-  properties: {
-    cloud_name: {
-      type: "string",
-      title: "Cloud Name",
+  properties: [
+    {
+      name: "cloud_name",
+      displayName: "Cloud Name",
+      type: "string" as const,
+      required: true,
       description: "Your Cloudinary cloud name",
-      required: true,
+      placeholder: "Enter your Cloudinary cloud name"
     },
-    api_key: {
-      type: "string", 
-      title: "API Key",
+    {
+      name: "api_key",
+      displayName: "API Key",
+      type: "string" as const,
+      required: true,
       description: "Your Cloudinary API key",
-      required: true,
+      placeholder: "Enter your Cloudinary API key"
     },
-    api_secret: {
-      type: "string",
-      title: "API Secret", 
+    {
+      name: "api_secret",
+      displayName: "API Secret",
+      type: "string" as const,
+      required: true,
+      secret: true,
       description: "Your Cloudinary API secret",
-      required: true,
-      "ui:widget": "password",
-    },
-  },
+      placeholder: "Enter your Cloudinary API secret"
+    }
+  ],
 };

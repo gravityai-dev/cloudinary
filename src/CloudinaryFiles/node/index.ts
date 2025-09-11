@@ -5,7 +5,7 @@ export const NODE_TYPE = "CloudinaryFiles";
 
 function createNodeDefinition(): EnhancedNodeDefinition {
   const { NodeInputType } = getPlatformDependencies();
-  
+
   return {
     type: NODE_TYPE,
     name: "Cloudinary Files",
