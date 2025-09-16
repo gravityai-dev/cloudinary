@@ -1,6 +1,6 @@
 {
   "name": "@gravityai-dev/cloudinary",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Cloudinary media management for Gravity workflow system - includes file listing and content retrieval",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "cloudinary": "^2.5.1",
-    "@gravityai-dev/gravity-server": "^0.2.113",
-    "@gravityai-dev/plugin-base": "^1.0.20",
+    "@gravityai-dev/gravity-server": "^0.2.114",
+    "@gravityai-dev/plugin-base": "^1.0.21",
     "zod": "^3.22.0"
   },
   "devDependencies": {
