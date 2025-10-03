@@ -19,6 +19,10 @@ const plugin = createPlugin({
     const { CloudinaryFileContentNode } = await import("./CloudinaryFileContent/node/index");
     api.registerNode(CloudinaryFileContentNode);
 
+    // Import and register CloudinaryUpload node
+    const { CloudinaryUploadNode } = await import("./CloudinaryUpload/node/index");
+    api.registerNode(CloudinaryUploadNode);
+
     // Import and register Cloudinary credential
     const { CloudinaryCredential } = await import("./credentials/index");
     api.registerCredential(CloudinaryCredential);
