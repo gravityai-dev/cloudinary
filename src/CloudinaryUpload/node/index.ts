@@ -12,7 +12,7 @@ function createNodeDefinition(): EnhancedNodeDefinition {
   const { NodeInputType } = getPlatformDependencies();
 
   return {
-    packageVersion: "1.0.15",
+    packageVersion: "1.0.18",
     type: NODE_TYPE,
     name: "Cloudinary Upload",
     description: "Upload images to Cloudinary from base64 data or URL",
@@ -68,21 +68,19 @@ function createNodeDefinition(): EnhancedNodeDefinition {
           title: "Folder Path",
           description: "Cloudinary folder to upload to (optional)",
           default: "",
-          "ui:placeholder": "e.g., generated-images",
         },
         publicId: {
           type: "string",
           title: "Public ID",
           description: "Custom public ID for the image (optional, auto-generated if empty)",
           default: "",
-          "ui:placeholder": "e.g., my-generated-image",
+          "ui:field": "template",
         },
         tags: {
           type: "string",
           title: "Tags",
           description: "Comma-separated tags for the image",
           default: "",
-          "ui:placeholder": "e.g., ai-generated,gemini",
         },
         resourceType: {
           type: "string",

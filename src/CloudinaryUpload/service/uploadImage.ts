@@ -10,9 +10,9 @@ import { getNodeCredentials, cloudinaryLogger as logger } from '../../shared/pla
 type CredentialContext = any;
 
 interface CloudinaryCredentials {
-  cloudName: string;
-  apiKey: string;
-  apiSecret: string;
+  cloud_name: string;
+  api_key: string;
+  api_secret: string;
 }
 
 /**
@@ -29,15 +29,15 @@ export async function uploadImage(
     // Fetch credentials
     const credentials = (await getNodeCredentials(context, "cloudinaryCredential")) as CloudinaryCredentials;
 
-    if (!credentials?.cloudName || !credentials?.apiKey || !credentials?.apiSecret) {
+    if (!credentials?.cloud_name || !credentials?.api_key || !credentials?.api_secret) {
       throw new Error("Cloudinary credentials are incomplete");
     }
 
     // Configure Cloudinary
     cloudinary.config({
-      cloud_name: credentials.cloudName,
-      api_key: credentials.apiKey,
-      api_secret: credentials.apiSecret,
+      cloud_name: credentials.cloud_name,
+      api_key: credentials.api_key,
+      api_secret: credentials.api_secret,
       secure: true,
     });
 
@@ -58,7 +58,15 @@ export async function uploadImage(
     }
 
     if (config.publicId) {
-      uploadOptions.public_id = config.publicId;
+      // Sanitize publicId: remove file extension, replace invalid characters
+      let sanitizedPublicId = config.publicId
+        .replace(/\.[^/.]+$/, '') // Remove file extension
+        .replace(/[^a-zA-Z0-9_\-\/]/g, '_') // Replace invalid chars with underscore
+        .replace(/_+/g, '_') // Replace multiple underscores with single
+        .replace(/^_|_$/g, ''); // Remove leading/trailing underscores
+      
+      uploadOptions.public_id = sanitizedPublicId;
+      log.info("Sanitized publicId", { original: config.publicId, sanitized: sanitizedPublicId });
     }
 
     if (config.tags) {
